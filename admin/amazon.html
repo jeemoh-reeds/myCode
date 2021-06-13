@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>AMAZON</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+  <nav class="navbar navbar-default fixed-top">
+    <header class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand header-brand" href="../index.html">Epiphannie A</a>
+      </div>
+    </header>
+  </nav>
+  <div class="container">
+    <section>
+      <h3 class="section-header affiliate-group">AMAZON</h3>
+
+      <div class="index-form">
+        <div class="container">
+          <div class="form-group">
+            <div class="alert alert-dark alert-hidden" role="alert" id="success"></div>
+            <div class="row">
+              <div class="col-sm-3">
+                <label for="accessId">Amazon Access Key ID:</label>
+                <input type="text" name="access-id" class="form-control" placeholder="Enter Access key" id="accessId" />
+              </div>
+              <div class="col-sm-3">
+                <label for="secretKey">Amazon Secret Key:</label>
+                <input type="password" placeholder="Enter Secret key" id="secretKey" class="form-control" />
+
+              </div>
+              <div class="col-sm-3">
+                <label for="trackingId">Amazon Tracking ID:</label>
+                <input type="text" placeholder="Enter Tracking ID" id="trackingId" class="form-control" />
+              </div>
+              <div class="col-sm-3">
+                <label for="locale">Amazon Locale:</label>
+                <select class="form-control" id="locale">
+                  <option>United Kingdom</option>
+                  <option>Region 2</option>
+                  <option>Region 3</option>
+                  <option>Region 4</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form group">
+          <div class="row amazon-test">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3">
+              <button class="btn btn-primary btn-sm form-control">TEST</button>
+            </div>
+            <div class="col-sm-3">
+              <button class="btn btn-primary btn-sm form-control" onclick="save()">SAVE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  </section>
+  </div>
+  <footer></footer>
+  <script src="../js/jquery-3.6.0.slim.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../main.js"></script>
+  <script>
+    //Configuring the save button to save to the database
+    async function save() {
+      const config = {
+        accessId: document.getElementById("accessId").value,
+        secretKey: document.getElementById("secretKey").value,
+        trackingId: document.getElementById("trackingId").value,
+        locale: document.getElementById("locale").value,
+
+      };
+
+
+      const successAlert = document.getElementById("success");
+      if(config.accessId.length < 5 || config.secretKey.length < 5){
+        successAlert.innerText = "Invalid data input";
+        successAlert.className = "alert alert-danger";
+        setTimeout(() => {
+          successAlert.className = "alert-hidden";
+        }, 3000);
+      } else {
+        try {
+        const result = await saveNetworkConfig("AMAZON", config);
+
+        successAlert.innerText = "Saved successfully";
+        successAlert.className = "alert alert-success";
+      } catch (error) {
+        successAlert.innerText = "Error saving to the database";
+        successAlert.className = "alert alert-danger";
+      } finally {
+        setTimeout(() => {
+          successAlert.className = "alert-hidden";
+        }, 3000);
+      }
+      }
+    
+      /* //To display a success or error message
+      try {
+        const result = await saveNetworkConfig("AMAZON", config);
+
+        successAlert.innerText = "Saved successfully";
+        successAlert.className = "alert alert-success";
+      } catch (error) {
+        successAlert.innerText = "Error saving to the database";
+        successAlert.className = "alert alert-danger";
+      } finally {
+        setTimeout(() => {
+          successAlert.className = "alert-hidden";
+        }, 3000);
+      }*/
+    } 
+
+    //Configure the input boxes to load last saved configuration
+    async function load() {
+      const data = await getNetworkConfig("AMAZON");
+      if (!data) return;
+      const config = data.config;
+      document.getElementById("accessId").value = config.accessId;
+      document.getElementById("secretKey").value = config.secretKey;
+      document.getElementById("trackingId").value =
+        config.trackingId;
+      document.getElementById("locale").value =
+        config.locale;
+    }
+
+    load();
+  </script>
+
+
+
+</body>
+
+
+</html>

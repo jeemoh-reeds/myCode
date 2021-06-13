@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>PRODUCT SET</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+  <div class="sidebar">
+    <a class="header-brand" href="../index.html">Epiphannie A</a>
+    <a href="networks.html" class="nav-link">
+      <div>
+        <p>
+          <i class="fas fa-network-wired"></i>&nbsp;<strong>NETWORKS</strong>
+        </p>
+      </div>
+    </a>
+    <a href="merchants.html" class="nav-link">
+      <div>
+        <p>
+          <i class="fas fa-store-alt"></i>&nbsp;<strong>MERCHANTS</strong>
+        </p>
+      </div>
+    </a>
+    <a href="#" class="nav-link">
+      <div>
+        <p>
+          <i class="fas fa-sliders-h"></i>&nbsp;<strong>COMPARISON<br />SETTINGS</strong>
+        </p>
+      </div>
+    </a>
+  </div>
+
+  
+  <div class="content">
+    <div class="container-fluid">
+      <section>
+        <h3 class="section-header">PRODUCT SET</h3>
+
+        <input type="text" placeholder="Enter product set title here" class="form-control" />
+        
+        <div class="products-dropdown">
+          <a class="data-toggle" data-toggle="collapse" data-target="#productSelection" href="#">
+            Product Selections
+          </a>
+        </div>
+
+        <div class="collapse" id="productSelection">          
+          
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#search">Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#savedSearch">Saved Search<span class="badge">0</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#singleProduct">Single Product<span class="badge">2</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#blockedProduct">Blocked Product<span class="badge">0</span></a>
+            </li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane container active" id="search">...</div>
+            <div class="tab-pane container fade" id="savedSearch">...</div>
+            <div class="tab-pane container fade" id="singleProduct">...</div>
+            <div class="tab-pane container fade" id="blockedProduct">...</div>
+          </div>
+        </div>
+
+        <div class="products-dropdown">
+          <a class="data-toggle" data-toggle="collapse" data-target="#productSearchForm" href="#">
+            Product Search Form
+          </a>
+        </div>
+        <div class="collapse" id="productSearchForm"> 
+          
+            <fieldset class="products-field">
+              <form>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="form-group col-sm-2">
+                      <select class="form-control" id="selAnyField">
+                        <option>Any Field</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-sm-2">
+                      <select class="form-control" id="selContains">
+                        <option>Contains</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                    </div>
+                    <input type="text" class="form-control col-sm-8">
+  
+                  </div>
+                  <a href="#" class="plus"><span>+</span> add filter</a>
+                  <br>
+                  <div class="d-flex">
+                    <div class="p-2"></div>
+                    <div class="p-2"></div>
+                    <div class="p-2 ml-auto"><button class="btn-default btn-outline-primary btn-sm">Search</button></div>
+                  </div>
+                  
+  
+                </div>
+  
+                
+              </form>
+  
+            </fieldset>
+                  
+          
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer></footer>
+
+  <script src="../js/jquery-3.6.0.slim.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../main.js"></script>
+
+  <script src="https://kit.fontawesome.com/15ca5f44f0.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

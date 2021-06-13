@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AWIN</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <a class="header-brand" href="../index.html">Epiphannie A</a>
+      <a href="networks.html" class="nav-link">
+        <div>
+          <p>
+            <i class="fas fa-network-wired"></i>&nbsp;<strong>NETWORKS</strong>
+          </p>
+        </div>
+      </a>
+      <a href="merchants.html" class="nav-link">
+        <div>
+          <p>
+            <i class="fas fa-store-alt"></i>&nbsp;<strong>MERCHANTS</strong>
+          </p>
+        </div>
+      </a>
+      <a href="#" class="nav-link">
+        <div>
+          <p>
+            <i class="fas fa-sliders-h"></i>&nbsp;<strong
+              >COMPARISON<br />SETTINGS</strong
+            >
+          </p>
+        </div>
+      </a>
+    </div>
+    <div class="content">
+      <div class="container-fluid">
+        <section>
+          <h3 class="section-header affiliate-group">AWIN</h3>
+
+          <div id="mainAccordion" class="accordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
+                  Network Configuration Keys
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse show"
+                aria-labelledby="headingOne"
+                data-bs-parent="#mainAccordion"
+              >
+                <div class="accordion-body">
+                  <div class="index-form">
+                    <div class="container">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <label for="apiToken">Publisher API Token:</label>
+                            <input
+                              type="text"
+                              name="apiToken"
+                              placeholder="Enter API Token"
+                              id="apiToken"
+                              class="form-control"
+                            />
+                          </div>
+                          <div class="col-sm-6">
+                            <label for="apiKey">Product API Key:</label>
+                            <input
+                              type="text"
+                              name="apiKey"
+                              placeholder="Enter API Key"
+                              id="apiKey"
+                              class="form-control"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="alert alert-hidden" role="alert" id="success"></div>
+
+                <div class="index-table">
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <tr>
+                        <th>Region</th>
+                        <th>Publisher ID</th>
+                        <th>Tracking ID</th>
+                        <th>Action</th>
+                      </tr>
+                      <tr>
+                        <td>UK</td>
+                        <td>
+                          <input
+                            class="form-control"
+                            placeholder="Enter Publisher ID"
+                            type="text"
+                            id="publisherId"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            class="form-control"
+                            placeholder="Enter Tracking ID"
+                            type="text"
+                            id="trackingId"
+                          />
+                        </td>
+                        <td>
+                          <button
+                            class="btn btn-primary btn-sm form"
+                            onclick="test()"
+                          >
+                            Update Merchants
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <button class="btn btn-primary btn-sm">+</button>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          <button
+                            class="btn btn-primary btn-sm"
+                            onclick="save()"
+                          >
+                            SAVE
+                          </button>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo"
+                >
+                  Merchants
+                </button>
+              </h2>
+              <div
+                id="collapseTwo"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingTwo"
+                data-bs-parent="#mainAccordion"
+              >
+                <div class="accordion-body">
+                  <table class="table"></table>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
+                  Products Feed
+                </button>
+              </h2>
+              <div
+                id="collapseThree"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingThree"
+                data-bs-parent="#mainAccordion"
+              >
+                <div class="accordion-body">
+                  <table class="table"></table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <footer></footer>
+
+    <script src="../js/jquery-3.6.0.slim.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../main.js"></script>
+    <script
+      src="https://kit.fontawesome.com/15ca5f44f0.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      //Configuring the save button to save to the database
+      async function save() {
+        const config = {
+          // accessId: document.getElementById("accessId").value,
+          // secretKey: document.getElementById("secretKey").value,
+          apiToken: document.getElementById("apiToken").value,
+          apiKey: document.getElementById("apiKey").value,
+          regions: {
+            uk: {
+              publisherId: document.getElementById("publisherId").value,
+              trackingId: document.getElementById("trackingId").value,
+            },
+          },
+        };
+
+        const successAlert = document.getElementById("success");
+        //To display a success or error message
+        if (config.apiToken.length < 5 || config.regions.uk.publisherId < 5) {
+          successAlert.innerText = "Invalid data input";
+          successAlert.className = "alert alert-danger";
+          setTimeout(() => {
+            successAlert.className = "alert-hidden";
+          }, 3000);
+        } else {
+          try {
+            const result = await saveNetworkConfig("AWIN", config);
+
+            successAlert.innerText = "Saved successfully";
+            successAlert.className = "alert alert-success";
+          } catch (error) {
+            successAlert.innerText = "Error saving to database";
+            successAlert.className = "alert alert-danger";
+          } finally {
+            setTimeout(() => {
+              successAlert.className = "alert-hidden";
+            }, 3000);
+          }
+        }
+      }
+
+      //Configure the input boxes to load last saved configuration
+      async function load() {
+        const data = await getNetworkConfig("AWIN");
+        if (!data) return;
+        const config = data.config;
+        // document.getElementById("accessId").value = config.accessId;
+        // document.getElementById("secretKey").value = config.secretKey;
+        document.getElementById("apiToken").value = config.apiToken;
+        document.getElementById("apiKey").value = config.apiKey;
+        document.getElementById("publisherId").value =
+          config.regions.uk.publisherId;
+        document.getElementById("trackingId").value =
+          config.regions.uk.trackingId;
+      }
+
+      load();
+
+      //function to test the connection to AWIN
+      async function test() {
+        var requestOptions = {
+          method: "GET",
+          redirect: "follow",
+        };
+
+        const successAlert = document.getElementById("success");
+        try {
+          const resp = await fetch(
+            "/api/admin/network/awin/merchants",
+            requestOptions
+          );
+          const data = await resp.json();
+          successAlert.innerText =
+            "Test successful. Found " + data.length + " merchants.";
+          successAlert.className = "alert alert-success";
+        } catch (error) {
+          console.log("error", error);
+          successAlert.innerText = "Error testing: " + error.message;
+          successAlert.className = "alert alert-danger";
+        } finally {
+          setTimeout(() => {
+            successAlert.className = "alert-hidden";
+          }, 3000);
+        }
+      }
+    </script>
+  </body>
+</html>

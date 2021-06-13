@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Networks</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <a class="header-brand" href="../index.html">Epiphannie A</a>
+      <a href="networks.html" class="nav-link">
+        <div>
+          <p>
+            <i class="fas fa-network-wired"></i>&nbsp;<strong>NETWORKS</strong>
+          </p>
+        </div>
+      </a>
+      <a href="merchants.html" class="nav-link">
+        <div>
+          <p>
+            <i class="fas fa-store-alt"></i>&nbsp;<strong>MERCHANTS</strong>
+          </p>
+        </div>
+      </a>
+      <a href="#" class="nav-link">
+        <div>
+          <p>
+            <i class="fas fa-sliders-h"></i>&nbsp;<strong
+              >COMPARISON<br />SETTINGS</strong
+            >
+          </p>
+        </div>
+      </a>
+    </div>
+    <div class="content">
+      <div class="container-fluid">
+        <section>
+          <h3 class="section-header">NETWORKS</h3>
+
+          <h3>Configuration</h3>
+          <p>
+            Select the affiliate networks you belong to, enter your affiliate ID
+            for each then click [Save Changes].
+          </p>
+
+          <div class="form-group">
+            <div class="row add-network-button-1">
+              <div class="col-sm-9"></div>
+              <div class="col-sm-3">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-sm"
+                  data-toggle="modal"
+                  data-target="#addNewNetwork"
+                  id="addNetworkButton"
+                >
+                  +
+                </button>
+                <label for="addNetworkButton">Add Network</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="index-table networks-table">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <tr>
+                  <th>NETWORK</th>
+                  <th>
+                    AFFILIATE ID &nbsp;<span
+                      class="networks-affiliate-id-danger"
+                      >(required)</span
+                    >
+                  </th>
+                  <th>TRACKING ID</th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" />&nbsp;
+                    <label>AMAZON</label>
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td align="center">
+                    <a href="amazon.html">AMAZON</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" />&nbsp;
+                    <label>AWIN</label>
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td align="center">
+                    <a href="awin.html">AWIN</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" />&nbsp;
+                    <label>IMPACT</label>
+                  </td>
+                  <td>
+                    <input
+                      class="form-control"
+                      placeholder="Enter Affiliate ID"
+                      type="text"
+                      id="imAffiliateId"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      class="form-control"
+                      placeholder="Enter Tracking ID"
+                      type="text"
+                      id="imTrackingId"
+                    />
+                  </td>
+                  <td>
+                    <div class="column btn-test">
+                      <div class="row-sm-6 btn-test-connection-2">
+                        <button class="btn-danger btn-sm">
+                          <strong>TEST</strong>
+                        </button>
+                      </div>
+                      <div class="row-sm-6 btn-test-connection-2">
+                        <button
+                          class="btn-primary btn-sm"
+                          onclick="saveImpact()"
+                        >
+                          <strong>SAVE CHANGES</strong>
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" />&nbsp;
+                    <label>RAKUTEN</label>
+                  </td>
+                  <td>
+                    <input
+                      class="form-control"
+                      placeholder="Enter Affiliate ID"
+                      type="text"
+                      id="rkAffiliateId"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      class="form-control"
+                      placeholder="Enter Tracking ID"
+                      type="text"
+                      id="rkTrackingId"
+                    />
+                  </td>
+                  <td>
+                    <div class="column btn-test">
+                      <div class="row-sm-6 btn-test-connection-2">
+                        <button class="btn-danger btn-sm">
+                          <strong>TEST</strong>
+                        </button>
+                      </div>
+                      <div class="row-sm-6 btn-test-connection-2">
+                        <button
+                          class="btn-primary btn-sm"
+                          onclick="saveRakuten()"
+                        >
+                          <strong>SAVE CHANGES</strong>
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <div
+                    class="alert alert-hidden"
+                    role="alert"
+                    id="success"
+                  ></div>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div>
+            <div class="modal" id="addNewNetwork">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4>Add Networks</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                      &times;
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="row">
+                        <div class="col-sm-2">
+                          <p>Settings</p>
+                        </div>
+                        <div class="col-sm-2">
+                          <input
+                            type="radio"
+                            id="default"
+                            name="addNetwork"
+                            class="form-check-input add-network-radio"
+                          />
+                          <label for="default"><strong>Default</strong></label>
+                        </div>
+                        <div class="col-sm-2">
+                          <input
+                            type="radio"
+                            id="bespoke"
+                            name="addNetwork"
+                            class="form-check-input add-network-radio"
+                          />
+                          <label for="bespoke"><strong>Bespoke</strong></label>
+                        </div>
+                        <div class="col-sm-6">&nbsp;</div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <input type="checkbox" id="newNetwork" />&nbsp;
+                          <label for="newNetwork" class="form-check-label"
+                            >New Network</label
+                          >
+                        </div>
+                        <div class="col-sm-4">
+                          <input
+                            class="form-control"
+                            placeholder="Enter Affiliate ID"
+                            type="text"
+                          />
+                        </div>
+                        <div class="col-sm-4">
+                          <input
+                            class="form-control"
+                            placeholder="Enter Tracking ID"
+                            type="text"
+                          />
+                        </div>
+                        <div class="col-sm-1">&nbsp;</div>
+                      </div>
+
+                      <div class="row add-network-button-2">
+                        <div class="col-sm-4">&nbsp;</div>
+                        <div class="col-sm-3">
+                          <button class="btn btn-primary btn-sm">
+                            <span>SAVE CHANGES</span>
+                          </button>
+                        </div>
+                        <div class="col-sm-5">&nbsp;</div>
+                      </div>
+                    </form>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-danger"
+                        data-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <footer></footer>
+
+    <script src="../js/jquery-3.6.0.slim.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../main.js"></script>
+    <script
+      src="https://kit.fontawesome.com/15ca5f44f0.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      //Configuring the save button for Impact to save to the database
+      async function saveImpact() {
+        const config = {
+          imAffiliateId: document.getElementById("imAffiliateId").value,
+          imTrackingId: document.getElementById("imTrackingId").value,
+        };
+
+        //To display a success or error message on Impact
+        const successAlert = document.getElementById("success");
+        if (config.imAffiliateId.length < 5) {
+          successAlert.innerText = "Invalid data input";
+          successAlert.className = "alert alert-danger";
+          setTimeout(() => {
+            successAlert.className = "alert-hidden";
+          }, 3000);
+        } else {
+          try {
+            const result = await saveNetworkConfig("IMPACT", config);
+            successAlert.innerText = "Impact Configuration saved successfully";
+            successAlert.className = "alert alert-success";
+          } catch (error) {
+            successAlert.innerText =
+              "Error saving Impact Configuration to database";
+            successAlert.className = "alert alert-danger";
+          } finally {
+            setTimeout(() => {
+              successAlert.className = "alert-hidden";
+            }, 3000);
+          }
+        }
+      }
+
+      //Configure the input boxes to load last saved configuration
+      async function loadImpact() {
+        const dataImpact = await getNetworkConfig("IMPACT");
+        if (!dataImpact) return;
+        const config = dataImpact.config;
+        document.getElementById("imAffiliateId").value = config.imAffiliateId;
+        document.getElementById("imTrackingId").value = config.imTrackingId;
+      }
+
+      loadImpact();
+
+      //Configuring the save button for Rakuten to save to the database
+      async function saveRakuten() {
+        const config = {
+          rkAffiliateId: document.getElementById("rkAffiliateId").value,
+          rkTrackingId: document.getElementById("rkTrackingId").value,
+        };
+        const successAlert = document.getElementById("success");
+        if (config.rkAffiliateId.length < 5) {
+          successAlert.innerText = "Invalid data input";
+          successAlert.className = "alert alert-danger";
+          setTimeout(() => {
+            successAlert.className = "alert-hidden";
+          }, 3000);
+        } else {
+          const successAlert = document.getElementById("success");
+
+          //To display a success or error message on Impact
+          try {
+            const result = await saveNetworkConfig("RAKUTEN", config);
+
+            successAlert.innerText = "Rakuten Configuration saved successfully";
+            successAlert.className = "alert alert-success";
+          } catch (error) {
+            successAlert.innerText =
+              "Error saving Rakuten Configuration to database";
+            successAlert.className = "alert alert-danger";
+          } finally {
+            setTimeout(() => {
+              successAlert.className = "alert-hidden";
+            }, 3000);
+          }
+        }
+      }
+
+      //Configure the input boxes to load last saved configuration
+      async function loadRakuten() {
+        const dataRakuten = await getNetworkConfig("RAKUTEN");
+        if (!dataRakuten) return;
+        const config = dataRakuten.config;
+        document.getElementById("rkAffiliateId").value = config.rkAffiliateId;
+        document.getElementById("rkTrackingId").value = config.rkTrackingId;
+      }
+
+      loadRakuten();
+    </script>
+  </body>
+</html>
